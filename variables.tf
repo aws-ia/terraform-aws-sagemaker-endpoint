@@ -85,7 +85,7 @@ variable "production_variant" {
     instance_type                                 = optional(string)
     model_data_download_timeout_in_seconds        = optional(number)
     variant_name                                  = optional(string, "AllTraffic")
-    volume_size_in_gb                             = optional(number, 30)
+    volume_size_in_gb                             = optional(number)
   })
   default = ({
     initial_instance_count                        = 1
@@ -94,20 +94,6 @@ variable "production_variant" {
     variant_name                                  = "AllTraffic"
     volume_size_in_gb                             = 30
   })
-
-  validation {
-    condition = var.production_variant.volume_size_in_gb != null && (
-      var.production_variant.volume_size_in_gb >= 1 && var.production_variant.volume_size_in_gb <= 512
-    )
-    error_message = "The volume_size_in_gb must be between 1 and 512 GB."
-  }
-
-  validation {
-    condition = var.production_variant.model_data_download_timeout_in_seconds != null && (
-      var.production_variant.model_data_download_timeout_in_seconds >= 60 && var.production_variant.model_data_download_timeout_in_seconds <= 3600
-    )
-    error_message = "The model_data_download_timeout_in_seconds must be between 60 and 3600 seconds."
-  }
 }
 
 variable "kms_key_arn" {
