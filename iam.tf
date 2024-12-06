@@ -7,7 +7,7 @@ resource "aws_iam_role" "sg_endpoint_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "sg_policy_attachment" {
-  count = var.sg_role_arn == null ? 1 : 0
-  role  = aws_iam_role.sg_endpoint_role[0].name
+  count      = var.sg_role_arn == null ? 1 : 0
+  role       = aws_iam_role.sg_endpoint_role[0].name
   policy_arn = data.aws_iam_policy.sg_full_access.arn
 }
