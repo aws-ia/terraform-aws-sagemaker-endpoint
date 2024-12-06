@@ -29,4 +29,6 @@ module "sagemaker-endpoint" {
         variant_name = "AllTraffic"
         instance_type = "ml.g5.2xl"
     }
+    #checkov:skip=CKV_AWS_370:The container will pull the model artifacts from HF
+    enable_network_isolation = false
 }

@@ -27,7 +27,7 @@ variable "tags" {
 variable "enable_network_isolation" {
   description = "Isolates the model container. No inbound or outbound network calls can be made to or from the model container."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "containers" {
