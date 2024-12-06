@@ -24,8 +24,7 @@ An inference pipeline is an Amazon SageMaker model that is composed of a linear 
 
 If you enable network isolation, the containers can't make any outbound network calls, even to other AWS services such as Amazon Simple Storage Service (S3). Additionally, no AWS credentials are made available to the container runtime environment.
 
-To enable network isolation, set the ```enable_network_isolation
-``` property to true.
+To enable network isolation, set the ***enable\_network\_isolation*** property to true.
 
 ### Container images
 
@@ -39,9 +38,7 @@ Reference an [AWS Deep Learning Container](https://docs.aws.amazon.com/deep-lear
 
 ### Model artifacts
 
-If you choose to decouple your model artifacts from your inference code (as is natural given different rates of change between inference code and model artifacts), the artifacts can be specified via the ```model_data_source
-``` property of ```var.containers
-```. The default is to have no model artifacts associated with a model.
+If you choose to decouple your model artifacts from your inference code (as is natural given different rates of change between inference code and model artifacts), the artifacts can be specified via the model\_data\_source property of var.containers. The default is to have no model artifacts associated with a model.
 
 ## Model hosting
 
@@ -111,7 +108,7 @@ No modules.
 | <a name="input_endpoint_name"></a> [endpoint\_name](#input\_endpoint\_name) | The name of the Amazon SageMaker Endpoint. | `string` | `"SGendpoint"` | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint. | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | This value is appended at the beginning of resource names. | `string` | `"SGTFendpoint"` | no |
-| <a name="input_production_variant"></a> [production\_variant](#input\_production\_variant) | Configuration for the production variant of the SageMaker endpoint. | <pre>object({<br>    accelerator_type                              = optional(string)<br>    container_startup_health_check_timeout_in_seconds = optional(number)<br>    core_dump_config                              = optional(object({<br>      destination_s3_uri = string<br>      kms_key_id        = optional(string)<br>    }))<br>    enable_ssm_access                             = optional(bool)<br>    inference_ami_version                         = optional(string)<br>    initial_instance_count                        = optional(number)<br>    instance_type                                 = optional(string)<br>    model_data_download_timeout_in_seconds        = optional(number)<br>    variant_name                                  = optional(number, "AllTraffic")<br>    volume_size_in_gb                             = optional(number, 30)<br>  })</pre> | <pre>{<br>  "initial_instance_count": 1,<br>  "instance_type": "ml.t2.medium",<br>  "model_data_download_timeout_in_seconds": 900,<br>  "variant_name": "AllTraffic",<br>  "volume_size_in_gb": 30<br>}</pre> | no |
+| <a name="input_production_variant"></a> [production\_variant](#input\_production\_variant) | Configuration for the production variant of the SageMaker endpoint. | <pre>object({<br>    accelerator_type                              = optional(string)<br>    container_startup_health_check_timeout_in_seconds = optional(number)<br>    core_dump_config                              = optional(object({<br>      destination_s3_uri = string<br>      kms_key_id        = optional(string)<br>    }))<br>    enable_ssm_access                             = optional(bool)<br>    inference_ami_version                         = optional(string)<br>    initial_instance_count                        = optional(number)<br>    instance_type                                 = optional(string)<br>    model_data_download_timeout_in_seconds        = optional(number)<br>    variant_name                                  = optional(string, "AllTraffic")<br>    volume_size_in_gb                             = optional(number, 30)<br>  })</pre> | <pre>{<br>  "initial_instance_count": 1,<br>  "instance_type": "ml.t2.medium",<br>  "model_data_download_timeout_in_seconds": 900,<br>  "variant_name": "AllTraffic",<br>  "volume_size_in_gb": 30<br>}</pre> | no |
 | <a name="input_sg_role_arn"></a> [sg\_role\_arn](#input\_sg\_role\_arn) | The ARN of the IAM role with permission to access model artifacts and docker images for deployment. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tag the Amazon SageMaker Endpoint resource. | `map(string)` | `null` | no |
 

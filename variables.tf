@@ -84,7 +84,7 @@ variable "production_variant" {
     initial_instance_count                        = optional(number)
     instance_type                                 = optional(string)
     model_data_download_timeout_in_seconds        = optional(number)
-    variant_name                                  = optional(number, "AllTraffic")
+    variant_name                                  = optional(string, "AllTraffic")
     volume_size_in_gb                             = optional(number, 30)
   })
   default = ({
