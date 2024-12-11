@@ -153,6 +153,7 @@ resource "aws_appautoscaling_target" "sagemaker_target" {
 }
 
 resource "aws_appautoscaling_policy" "sagemaker_policy" {
+  count              = var.autoscaling_config != null ? 1 : 0
   name               = "SageMakerEndpointInvocationScalingPolicy"
   policy_type        = "TargetTrackingScaling"
   resource_id        = aws_appautoscaling_target.sagemaker_target[0].resource_id
