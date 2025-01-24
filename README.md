@@ -39,7 +39,7 @@ Reference an [AWS Deep Learning Container](https://docs.aws.amazon.com/deep-lear
 
 ### Model artifacts
 
-If you choose to decouple your model artifacts from your inference code (as is natural given different rates of change between inference code and model artifacts), the artifacts can be specified via the model\_data\_source property of var.containers. The default is to have no model artifacts associated with a model.
+If you choose to decouple your model artifacts from your inference code (as is natural given different rates of change between inference code and model artifacts), the artifacts can be specified via the model\_data\_source property of var.containers. The default is to have no model artifacts associated with a model. For instance: model\_data\_source=s3://{bucket\_name}/{key\_name}/model.tar.gz
 
 ## Model hosting
 
@@ -57,11 +57,11 @@ TODO
 
 #### Asynchronous inference endpoints
 
-TODO
+Coming soon
 
 ### AutoScaling
 
-TODO
+To enable autoscaling on the production variant, use the autoscaling\_config variable. For load testing guidance on determining the maximum requests per second per instance, please see this [documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-scaling-loadtest.html).
 
 ## Requirements
 
@@ -115,6 +115,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_sagemaker_endpoint_config_name"></a> [sagemaker\_endpoint\_config\_name](#output\_sagemaker\_endpoint\_config\_name) | The name of the SageMaker endpoint configuration |
 | <a name="output_sagemaker_endpoint_name"></a> [sagemaker\_endpoint\_name](#output\_sagemaker\_endpoint\_name) | The name of the SageMaker endpoint |
 | <a name="output_sagemaker_role_arn"></a> [sagemaker\_role\_arn](#output\_sagemaker\_role\_arn) | The ARN of the IAM role for the SageMaker endpoint |
 <!-- END_TF_DOCS -->
