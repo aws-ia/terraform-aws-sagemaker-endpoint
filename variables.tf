@@ -34,6 +34,8 @@ variable "containers" {
   description = "Specifies the container definitions for this SageMaker model, consisting of either a single primary container or an inference pipeline of multiple containers."
   type = list(object({
     image_uri          = optional(string)
+    model_package_name = optional(string)
+    model_data_url     = optional(string)
     mode               = optional(string, "SingleModel")
     environment        = optional(map(string))
     container_hostname = optional(string)

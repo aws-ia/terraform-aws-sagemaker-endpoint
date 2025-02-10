@@ -16,6 +16,8 @@ resource "aws_sagemaker_model" "sagemaker_model" {
     for_each = length(var.containers) == 1 ? [var.containers[0]] : []
     content {
       image              = primary_container.value.image_uri
+      model_package_name = primary_container.value.model_package_name
+      model_data_url     = primary_container.value.model_data_url
       mode               = primary_container.value.mode
       environment        = primary_container.value.environment
       container_hostname = primary_container.value.container_hostname
@@ -60,6 +62,8 @@ resource "aws_sagemaker_model" "sagemaker_model" {
     for_each = length(var.containers) > 1 ? var.containers : []
     content {
       image              = container.value.image_uri
+      model_package_name = container.value.model_package_name
+      model_data_url     = container.value.model_data_url
       mode               = container.value.mode
       environment        = container.value.environment
       container_hostname = container.value.container_hostname
