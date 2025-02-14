@@ -15,12 +15,12 @@ data "aws_iam_policy_document" "sg_trust" {
   statement {
     actions = ["sts:AssumeRole"]
     principals {
-      identifiers = ["sagemaker.${data.aws_partition.current.dns_suffix}"]
+      identifiers = ["sagemaker.${local.partition.dns_suffix}"]
       type        = "Service"
     }
   }
 }
 
 data "aws_iam_policy" "sg_full_access" {
-  arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonSageMakerFullAccess"
+  arn = "arn:${local.partition}:iam::aws:policy/AmazonSageMakerFullAccess"
 }
