@@ -44,3 +44,9 @@ go.sum
 
 # Terraform tests 
 tests/*.auto.tfvars
+
+# Python virtual environment
+.venv/
+
+#MacOs specific
+.DS_Store
