@@ -110,8 +110,8 @@ variable "autoscaling_config" {
     min_capacity       = optional(number, 1)
     max_capacity       = number
     target_value       = number
-    scale_in_cooldown  = number
-    scale_out_cooldown = number
+    scale_in_cooldown  = optional(number)
+    scale_out_cooldown = optional(number)
   })
   default = null
 }
